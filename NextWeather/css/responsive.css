@@ -1,0 +1,19 @@
+
+@media (max-width: 600px) {
+    .wrapper{
+        display: flex;
+        flex-direction: column !important;
+    }
+
+    .wrapper .grid-item{
+        border-radius: 10px !important;
+    }
+
+    .grid-item .info{
+        margin-bottom: 10%;
+    }
+
+    .city-info{
+        flex-direction: column;
+    }
+}
