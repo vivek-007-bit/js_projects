@@ -78,21 +78,20 @@ function setValue(response) {
 
     city_name.innerHTML = `<img src="./assets/location-dot-solid-full.svg" alt="" style="width: 20px;">` + response.name + `,  ` + response.sys.country;
 
-    const dt = response.dt;
-    const timezone = response.timezone;
-
     coords.innerHTML = `Latitude: ` + response.coord.lat + `<span style="margin-left:10px"></span> Longitude: ` + response.coord.lon;
 
-    const localTime = new Date((dt + timezone) * 1000);
+    const utcTime = new Date(response.dt * 1000);
 
-    datetime.innerHTML = localTime.toLocaleString("en-IN", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit"
-    });
+    datetime.innerHTML = utcTime.toLocaleString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+    }) + `(IST)`;
+    
 
     const summaryText = getWeatherSummary(
       response.main.temp,
