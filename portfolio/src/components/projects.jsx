@@ -15,7 +15,7 @@ function Projects() {
       img: '/project2.png',
       text: 'A full-stack Facebook-inspired social media application with secure authentication, interactive user features for improved user engagement.',
       techStack: ['PHP', 'MySQL', 'Bootstrap', 'JavaScript', 'Cloudinary API'],
-      link: 'https://facebook-m0pv.onrender.com',
+      link: 'https://facebook-m0pv.onrender.com/login.php',
       github: 'https://github.com/vivek-007-bit/php_projects/tree/main/facebook',
     },
     {
