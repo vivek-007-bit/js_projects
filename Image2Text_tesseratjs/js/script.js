@@ -10,9 +10,14 @@ const extractedText = document.getElementById("extracted-text");
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+const model1 = document.getElementById("model1");
+const model2 = document.getElementById("model2");
+
+var file = "";
+
 
 inputImg.addEventListener("change", async (e) => {
-  const file = e.target.files[0];
+  file = e.target.files[0];
   console.log("Selected file:", file);
 
   if (!file) return;
@@ -24,27 +29,35 @@ inputImg.addEventListener("change", async (e) => {
   };
 
   reader.readAsDataURL(file);
-  selectModel(file);
+  return file;
 });
 
 
-async function selectModel(file) {
-  const selectedMode = document.querySelector('input[name="mode"]:checked').value;
 
-  console.log(selectedMode);
+//buttons for calling the ocr models
+model1.addEventListener("click", () => {
+  console.log("model1 called");
 
-  if (selectedMode === "tesseract-model") {
-      tesseract(file);
-  } else {
-     trocr(file);
-  }
-}
+  tesseract(file);
+});
+
+
+model2.addEventListener("click", () => {
+  console.log("model2 called");
+
+  trocr(file);
+});
+
 
 
 //tesseract model
 async function tesseract(file) {
 
+  if (!file) return;
+
   console.log("tesseract model loaded");
+  model1.disabled = true;
+  model2.disabled = true;
 
   spinner.style.display = "block";
 
@@ -82,6 +95,9 @@ async function tesseract(file) {
   extractedText.value = data.text;
   spinner.style.display = "none";
 
+  model1.disabled = false;
+  model2.disabled = false;
+
   await worker.terminate();
 }
 
@@ -89,6 +105,10 @@ async function tesseract(file) {
 async function trocr(file) {
 
   console.log("trocr model loaded");
+  if (!file) return;
+
+  model1.disabled = true;
+  model2.disabled = true;
 
   spinner.style.display = "block";
 
@@ -100,8 +120,11 @@ async function trocr(file) {
 
   console.log(result.data);
 
-  extractedText.value = result.data;
+  extractedText.value = result.data[1];
 
   spinner.style.display = "none";
+
+  model1.disabled = false;
+  model2.disabled = false;
 
 }
