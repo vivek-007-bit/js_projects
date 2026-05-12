@@ -86,7 +86,7 @@ async function tesseract(file) {
   data.words.forEach(word => {
     const { x0, y0, x1, y1 } = word.bbox;
 
-    ctx.strokeStyle = 'red';
+    ctx.strokeStyle = '#90EE90';
     ctx.lineWidth = 2;
     ctx.strokeRect(x0, y0, x1 - x0, y1 - y0);
   });
