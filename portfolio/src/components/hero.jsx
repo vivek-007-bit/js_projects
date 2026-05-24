@@ -9,10 +9,6 @@ function HeroSection() {
   const typedRef = useRef(null);
   const vantaRef = useRef(null);
 
-  const handleExplore = () => {
-    navigate("/explore");
-  };
-
   const handleContact = () => {
     navigate("/contact");
   };
@@ -77,6 +73,7 @@ function HeroSection() {
         <Image
           src="/profile-pic.jpg"
           alt="profile picture"
+          loading="lazy"
           width={200}
           height={200}
           roundedCircle
@@ -118,9 +115,13 @@ function HeroSection() {
             variant="light"
             size="lg"
             className="px-4 me-sm-3 mb-2 mb-sm-0"
-            onClick={handleExplore}
           >
-            Explore Portfolio
+            <a href="#about" style={{
+              textDecoration: "none",
+              color: "black",
+            }}>
+              Explore Portfolio
+            </a>
           </Button>
 
           <Button
