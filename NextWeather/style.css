@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url("/assets/bg.jpg");
+    backdrop-filter: blur(10px);
+    min-height: 100dvh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border: solid black 2px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    width: 550px;
+    height: auto;
+    margin: auto;
+}
+
+.header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.header #search-bar {
+    border: solid black 1px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 70%;
+    font-size: 20px;
+}
+
+.header #searchBar::placeholder {
+    font-weight: 600;
+}
+
+.header button {
+    border-radius: 50%;
+    border: solid black 1px;
+    padding: 10px;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header button img {
+    height: 35px;
+    width: 35px;
+}
+
+.weather {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+.container .row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.row #current-weather-icon {
+    height: 70px;
+    width: 70px;
+}
+
+.row img {
+    width: 30px;
+    height: 30px;
+}
+
+.container .info {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.info .card {
+    background-color: whitesmoke;
+    border: solid black 1px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info .card:hover {
+    transform: scale(1.05);
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.info .card span {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.info span img {
+    width: 25px;
+    height: 25px;
+}
+
+.container .forecast {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+#precipitation-forecast,
+#tempertaure-forecast,
+#humidity-forecast {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 90px;
+    padding: 10px;
+    border: solid black 1px;
+    border-radius: 10px;
+
+}
