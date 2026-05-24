@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=S, initial-scale=1.0">
+    <title>NextWeather | A Weather Prediction Model</title>
+
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+            <button id="location-btn"><img src="/assets/location-dot-solid-full.svg"></button>
+            <input type="text" placeholder="Search City" id="search-bar">
+            <button id="search-btn"><img src="assets/magnifying-glass-solid-full.svg" alt="search-bar-icon"></button>
+        </div>
+
+        <div class="weather">
+
+            <div class="wrapper">
+                <div class="row">
+                    <img src="/assets/sunny.png" alt="current-weather-icon" id="current-weather-icon">
+                    <h2 style="display: flex; align-items: center;"><img src="/assets/location-dot-solid-full.svg">
+                        <p id="city-country"></p>
+                    </h2>
+                    <h3 id="current-temperature"></h3>
+                    <h3 id="feels-like"></h3>
+                    <h3 id="weather-status"></h3>
+                </div>
+
+                <div class="info">
+
+                    <div class="card">
+                        <span>
+                            <b>Clouds</b>
+                            <img src="/assets/clouds.svg" alt="" srcset="">
+                        </span>
+                        <h3 id="clouds"></h3>
+                    </div>
+
+                    <div class="card">
+                        <span>
+                            <b>Humidity</b>
+                            <img src="/assets/humidity.png" alt="" srcset="">
+                        </span>
+                        <h3 id="humidity"></h3>
+                    </div>
+
+                    <div class="card">
+                        <span>
+                            <b>WindSpeed</b>
+                            <img src="/assets/windspeed.svg" alt="" srcset="">
+                        </span>
+                        <h3 id="wind-speed"></h3>
+                    </div>
+
+                    <div class="card">
+                        <span>
+                            <b>Pressure</b>
+                            <img src="/assets/pressure.png" alt="" srcset="">
+                        </span>
+                        <h3 id="pressure"></h3>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="forecast">
+                <div id="precipitation-forecast">
+
+                </div>
+
+                <div id="tempertaure-forecast">
+
+                </div>
+                <div id="humidity-forecast">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
