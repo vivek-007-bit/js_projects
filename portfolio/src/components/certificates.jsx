@@ -14,7 +14,7 @@ function certificates() {
       id: 2,
       img: '/certificate2.jpg',
       title: 'CyberSecurity',
-      issuedBy: 'SkillIndia',
+      issuedBy: 'Skill India',
       year: '2025',
     },
   ];
