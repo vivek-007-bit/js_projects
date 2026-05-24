@@ -45,7 +45,7 @@ function skills() {
     <>
       <Container className="px-4 py-5" id="icon-grid">
         <h2 className="pb-2 mb-4 mt-5 border-bottom" id='skills'>Skills</h2>
-        <Row xs={1} sm={2} md={3} lg={3} className="g-3 py-5">
+        <Row xs={1} sm={2} md={2} lg={2} className="g-3 py-5">
           {skills.map(skills => (
             <Col key={skills.id} className="d-flex align-items-start shadow-lg card-hover rounded p-2">
               <img
