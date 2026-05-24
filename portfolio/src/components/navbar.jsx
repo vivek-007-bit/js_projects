@@ -31,8 +31,8 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
-            <Nav.Link href="#skills">Skills</Nav.Link> 
-            <Nav.Link href="#certificates">Certificates</Nav.Link>
+            <Nav.Link as={Link} to="/skills">Skills</Nav.Link> 
+            <Nav.Link as={Link} to="/certificates">Certificates</Nav.Link>
             <Nav.Link as={Link} to="/projects">Projects</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
           </Nav>
