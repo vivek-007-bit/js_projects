@@ -29,7 +29,7 @@ function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className='p-3 rounded'>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/hero">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             <Nav.Link as={Link} to="/skills">Skills</Nav.Link> 
             <Nav.Link as={Link} to="/certificates">Certificates</Nav.Link>
