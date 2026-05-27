@@ -29,7 +29,7 @@ function Projects() {
     },
     {
       id: 4,
-      img: '/project3.png',
+      img: '/project4.png',
       text: `<h4>My Diary</h4>An online journaling application with secure login/signup authentication and full CRUD functionality, allowing users to create, edit, manage, and organize their personal journal entries efficiently.`,
       techStack: ['PHP', 'MySQL', 'JavaScript'],
       link: 'https://diary-app-4k8w.onrender.com/',
