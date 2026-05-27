@@ -5,7 +5,7 @@ function Projects() {
   const cards = [
     {
       id: 1,
-      img: '/project1.webp',
+      img: '/project1.png',
       text: `<h4>Handwriting2Text</h4>A ML project that converts handwritten images into digital text using neural networks and image processing.`,
       techStack: ['JavaScript', 'Python'],
       link: 'https://img2text-tesseractjs.onrender.com/',
@@ -21,7 +21,7 @@ function Projects() {
     },
     {
       id: 3,
-      img: '/project4.png',
+      img: '/project3.png',
       text: `<h4>Nextweather</h4>A weather application that provides real time weather data using OpenWeather API and forecasts weather using Machine Learing algorithms`,
       techStack: ['JavaScript', 'Python'],
       link: 'https://nextweather7.netlify.app/',
@@ -29,7 +29,7 @@ function Projects() {
     },
     {
       id: 4,
-      img: '/project3.webp',
+      img: '/project3.png',
       text: `<h4>My Diary</h4>An online journaling application with secure login/signup authentication and full CRUD functionality, allowing users to create, edit, manage, and organize their personal journal entries efficiently.`,
       techStack: ['PHP', 'MySQL', 'JavaScript'],
       link: 'https://diary-app-4k8w.onrender.com/',
