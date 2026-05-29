@@ -8,7 +8,6 @@ let searchBtn = document.getElementById('search-btn');
 
 //weather variables
 let currentWeatherIcon = document.getElementById('current-weather-icon');
-let currentWeatherStatus;
 
 let cityCountry = document.getElementById('city-country');
 let currentTemperature = document.getElementById('current-temperature');
@@ -29,6 +28,12 @@ const baseURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=
 var response;
 
 
+//prediction variables
+let rainProbability = document.getElementById("rain-probability");
+let tempPrediction = document.getElementById("temp-prediction");
+let humidityForecast = document.getElementById("humidity-prediction");
+
+
 //default city
 window.addEventListener("load", () => {
     getWeatherByCity("Tokyo");
@@ -40,7 +45,7 @@ async function getWeatherByCity(city) {
     const request = await fetch(baseURL + city + `&appid=${apiKey}`);
     response = await request.json();
 
-    console.log(response);
+    //console.log(response);
     setValue(response);
 }
 
@@ -55,10 +60,12 @@ async function getWeatherByLocation(lat, lon) {
     setValue(response);
 }
 
+
 //location btn 
 geoLocationBtn.addEventListener("click", function () {
     getLocation();
 });
+
 
 //search btn 
 searchBtn.addEventListener("click", function () {
@@ -66,6 +73,16 @@ searchBtn.addEventListener("click", function () {
     getWeatherByCity(city);
 });
 
+
+//trigger the getweather function by clicking enter button
+document.addEventListener("keyup", function(e){
+
+    //console.log(e.keyCode);
+    const city = searchBar.value.trim();
+    if (e.keyCode == 13 && city !== "") {
+        getWeatherByCity(city);
+    }
+});
 
 
 //get geo location
@@ -88,7 +105,7 @@ function getLocation() {
 }
 
 
-
+//set the value in the dom after the response is received
 function setValue(response) {
 
     if (response.cod == 404) {
@@ -97,35 +114,66 @@ function setValue(response) {
 
     else {
 
-        currentWeatherStatus = response.weather[0].main;
-        console.log(currentWeatherStatus);
+        const condition = response.weather[0].main;
+        //console.log(condition);
+
+        //setting the weather icons
+        if (condition == "Clear") {
+            currentWeatherIcon.src = "/assets/icons/clear.svg";
+        }
+
+        else if (condition == "Clouds") {
+            currentWeatherIcon.src = "/assets/icons/cloud.svg";
+        }
+
+        else if (condition == "Rain") {
+            currentWeatherIcon.src = "/assets/icons/rain.svg";
+        }
+
+        else if (condition == "Snow") {
+            currentWeatherIcon.src = "/assets/icons/snow.svg";
+        }
+
+        else if (condition == "Thunderstorm") {
+            currentWeatherIcon.src = "/assets/icons/thunderstorm.png";
+        }
+
+       else if (condition == "Fog") {
+            currentWeatherIcon.src = "/assets/icons/fog.svg";
+        }
+
+        else {
+            currentWeatherIcon = "/assets/icons/default.png";
+        }
+
+
 
         cityCountry.innerHTML = response.name + `, ` + response.sys.country;
 
         currentTemperature.innerHTML = `Temperature: ` + response.main.temp + ` °C`;
         feelsLike.innerHTML = `Feels Like: ` + response.main.feels_like + ` °C`;
-        weatherStatus.innerHTML = response.weather[0].description;
+        weatherStatus.innerHTML = response.weather[0].description.toUpperCase();
 
         clouds.innerHTML = response.clouds.all + `%`;
         humidity.innerHTML = response.main.humidity + `%`;
         windSpeed.innerHTML = response.wind.speed + ` m/s`;
         pressure.innerHTML = response.main.pressure + ` hPa`;
 
+
+        //calling the forecast function
+        forecast();
+
+        //clear the previous predictions
+        rainProbability.innerHTML = "";
+        tempPrediction.innerHTML = "";
+        humidityForecast.innerHTML = "";
+
+
     }
 }
 
 
-
-function setWeatherIcon(status) {
-    if (status == 'Clouds') {
-        currentWeatherIcon.src = '/assets/cloudy.png';
-    }
-}
-
-setWeatherIcon(currentWeatherStatus);
-
-
-//foorecast
+//forecast function
 async function forecast() {
     const client = await Client.connect("vivek007ejfb/weather_prediction_model");
     const result = await client.predict("/weather_view", {
@@ -142,21 +190,38 @@ async function forecast() {
         description: response.weather[0].description,
     });
 
-    result.data.forEach(item => {
-        console.log(item);
+    let res = result.data[0];
+    //console.log(res)
+
+    document.getElementById("loading").style.display = "none";
+
+    document.getElementsByClassName("forecast")[0].style.display = "flex";
+
+    rainProbability.innerHTML = `${res.prediction.rain_tomorrow}% Chance`;
+
+    //temp
+    res.forecast.forEach(item => {
+        tempPrediction.innerHTML += `
+                                        <div class="card" style="width: 18rem;">
+                                            <h3 class="card-title">${item.time}</h3>
+                                            <div class="card-body">
+                                            <h3 class="card-text">${item.temperature_c} °C</h3>
+                                            </div>
+                                        </div>`;
     });
 
 
-    result.data.forEach(item => {
-        const rain = item.match(/Rain Prediction:\s*(.*)/)?.[1];
-      
-        precipitationForecast.innerHTML = `<h3>Rain Prediction:</h3>` +  rain;
-      });
+    //humidity
+    res.forecast.forEach(item => {
+        humidityForecast.innerHTML += `
+                                        <div class="card" style="width: 18rem;">
+                                            <h3 class="card-title">${item.time}</h3>
+                                            <div class="card-body">
+                                            <h3 class="card-text">${item.humidity_percent}%</h3>
+                                            </div>
+                                        </div>`;
+    });
+
 }
 
-forecast();
 
-
-let precipitationForecast = document.getElementById("precipitation-forecast");
-let tempertaureForecast = document.getElementById("tempertaure-forecast");
-let humidityForecast = document.getElementById("humidity-forecast");
