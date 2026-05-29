@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=S, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextWeather | A Weather Prediction Model</title>
 
     <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="responsive.css">
+
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
 </head>
 
@@ -24,7 +25,7 @@
 
             <div class="wrapper">
                 <div class="row">
-                    <img src="/assets/sunny.png" alt="current-weather-icon" id="current-weather-icon">
+                    <img src="/assets/icons/default.png" alt="weather-icon" id="current-weather-icon">
                     <h2 style="display: flex; align-items: center;"><img src="/assets/location-dot-solid-full.svg">
                         <p id="city-country"></p>
                     </h2>
@@ -70,16 +71,23 @@
                 </div>
             </div>
 
+            <div id="loading" style="font-size: 20px;">Loading Forecast Data...</div>
+
             <div class="forecast">
-                <div id="precipitation-forecast">
-
+                <div id="rain-prediction">
+                    <span style="display: flex;">
+                        <img src="./assets/rain-prediction.svg" alt="rain-prediction">
+                        <h3>Rain Prediction</h3>
+                    </span>
+                    <button type="button" class="rain-prob-btn" id="rain-probability"></button>
                 </div>
 
-                <div id="tempertaure-forecast">
-
+                <h3>Hourly Forecast</h3>
+                <div id="temp-prediction">
                 </div>
-                <div id="humidity-forecast">
 
+                <h3>Humidity</h3>
+                <div id="humidity-prediction">
                 </div>
             </div>
 
