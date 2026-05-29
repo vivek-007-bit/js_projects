@@ -6,10 +6,13 @@
 
 body {
     background: url("/assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     backdrop-filter: blur(10px);
     min-height: 100dvh;
     width: 100vw;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .container {
@@ -25,6 +28,7 @@ body {
     height: auto;
     margin: auto;
 }
+
 
 .header {
     width: 100%;
@@ -70,7 +74,7 @@ body {
     padding: 10px;
 }
 
-.wrapper{
+.wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr)
 }
@@ -87,6 +91,7 @@ body {
 .row #current-weather-icon {
     height: 70px;
     width: 70px;
+    border-radius: 50%;
 }
 
 .row img {
@@ -135,22 +140,65 @@ body {
 
 .container .forecast {
     width: 100%;
-    height: 300px;
+    min-height: 300px;
+    height: auto;
     padding: 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    gap: 5px;
     flex-direction: column;
+    display: none;
 }
 
-#precipitation-forecast,
-#tempertaure-forecast,
-#humidity-forecast {
+#rain-prediction,
+#temp-prediction,
+#humidity-prediction {
     background-color: whitesmoke;
     width: 100%;
     height: 90px;
     padding: 10px;
     border: solid black 1px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
+#temp-prediction,
+#humidity-prediction{
+    gap: 5px;
+}
+
+
+#rain-prediction img {
+    height: 80px;
+    width: 80px;
+    filter: invert(40%) sepia(100%) saturate(1000%) hue-rotate(80deg) brightness(60%);
+}
+
+.rain-prob-btn{
+    padding: 10px;
+    font-size: 16px;
+    color: rgb(11, 67, 11);
+    border: solid black 1px;
+    background-color: rgb(228, 255, 228);
+    border-radius: 10px;
+    width: 120px;
+}
+
+
+.forecast .card{
+    padding: 12px;
+    border: solid rgb(149, 149, 149) 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.forecast .card:hover{
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 12px rgba(128, 128, 128, 0.15);
 }
