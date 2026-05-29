@@ -1,0 +1,38 @@
+@media (max-width: 768px) {
+
+    body{
+        overflow-x: hidden;
+        background: rgb(0, 0, 0);
+    }
+
+    .container {
+        width: 100vw;
+        top: 0;
+        left: 0;
+        transform: translate(-0, -0);
+    }
+
+    .header #search-bar {
+        width: 60%;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info {
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .forecast .card {
+        flex: 1;
+    }
+
+    #temp-prediction,
+    #humidity-prediction {
+        overflow-x: scroll;
+        overflow-y: hidden;
+      }
+
+}
