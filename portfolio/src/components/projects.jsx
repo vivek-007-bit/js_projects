@@ -22,7 +22,7 @@ function Projects() {
     {
       id: 3,
       img: '/project3.png',
-      text: `<h4>Nextweather</h4>A weather application that provides real time weather data using OpenWeather API and forecasts weather using Machine Learing algorithms`,
+      text: `<h4>ClimateNet</h4>A weather application that provides real time weather data using OpenWeather API and forecasts weather using Machine Learing algorithms`,
       techStack: ['JavaScript', 'Python'],
       link: 'https://climatenet.netlify.app/',
       github: 'https://github.com/vivek-007-bit/js_projects/tree/main/NextWeather',
