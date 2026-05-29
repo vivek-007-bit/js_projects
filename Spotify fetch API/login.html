@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Login</title>
+    <link rel="icon" type="image/png" href="assets/spotify-16.png">
+    <style>
+        .invert {
+            filter: invert(1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(25, 23, 23);
+        }
+
+        .container {
+            background-color: black;
+            max-width: 600px;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 5px;
+            padding: 15px 50px;
+        }
+
+        .header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 45px;
+        }
+
+        .header h1 {
+            color: white;
+            font-weight: 800;
+        }
+
+        .shortcut {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+
+        .shortcut a {
+            display: flex;
+            align-items: center;
+        }
+
+        .shortcut a img {
+            width: 25px;
+        }
+
+        .shortcut a {
+            text-decoration: none;
+            color: white;
+            background-color: rgba(27, 26, 26, 0.893);
+            width: 300px;
+            padding: 15px 10px;
+            border: solid rgb(221, 219, 219) 1px;
+            border-radius: 30px;
+            font-weight: 800;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .separator {
+            width: 100%;
+            height: 0.4px;
+            background-color: rgba(134, 120, 120, 0.896);
+            margin: 50px 0;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box label {
+            color: white;
+            font-weight: 800;
+            margin: 3px 0;
+        }
+
+        .box input {
+            height: 45px;
+            width: 290px;
+            padding: 9px;
+            border: solid rgb(133, 127, 127) 1px;
+            border-radius: 2px;
+            background-color: rgba(27, 26, 26, 0.893);
+            appearance: none;
+            outline: none;
+            color: white;
+        }
+
+        .box input::placeholder {
+            color: rgba(173, 164, 164, 0.907);
+        }
+
+        .btn-green {
+            margin: 15px 0;
+            height: 45px;
+            width: 290px;
+            color: black;
+            font-weight: 700;
+            border-radius: 30px;
+            background-color: rgb(82, 235, 82);
+        }
+
+        .box span {
+            color: rgb(193, 186, 186);
+            margin: 10px 0;
+        }
+
+
+        .box span a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="assets/logo.png" alt="logo">
+            <h1>Login to Spotify</h1>
+        </div>
+        <div class="shortcut">
+            <a href="#"><img src="assets/google-icon.svg" alt="google">Continue with Google</a>
+            <a href="#"><img src="assets/apple-logo.svg" alt="apple" class="invert">Continue with Apple</a>
+            <a href="#">Continue with phone Number</a>
+        </div>
+        <div class="separator">
+        </div>
+        <form action="#" class="box">
+            <label for="Email">Email or username</label>
+            <input type="text" placeholder="Email or username">
+            <button class="btn-green">Continue</button>
+            <span>Don't have an account? <a href="signup.html">Sign up for Spotify.</a></span>
+        </form>
+    </div>
+</body>
+
+</html>
