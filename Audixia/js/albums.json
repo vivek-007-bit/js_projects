@@ -1,0 +1,26 @@
+[
+    {
+        "folder": "Anime",
+        "title": "Anime",
+        "cover": "https://i.scdn.co/image/ab67616d00001e02f6195493937c322ecd6f627c",
+        "description": "Best Anime songs"
+    },
+    {
+        "folder": "Doraemon",
+        "title": "Doraemon Hits",
+        "cover": "https://resize.cdn.otakumode.com/full/u/4b17317d3c3d45af8449fbfc34fbdb27.jpg",
+        "description": "Best Doraemon songs"
+    },
+    {
+        "folder": "My Mix",
+        "title": "Mix Hits",
+        "cover": "https://c.saavncdn.com/540/Trending-Bollywood-1-Min-Mix-Hindi-2023-20230720160521-500x500.jpg",
+        "description": "Best My Mix songs"
+    },
+    {
+        "folder": "Lofi",
+        "title": "Lofi Beats",
+        "cover": "https://c.saavncdn.com/373/LO-FI-Beats-Hindi-2022-20220308083357-500x500.jpg",
+        "description": "Best Lofi Beats"
+    }
+]
