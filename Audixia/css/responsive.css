@@ -23,6 +23,7 @@
 
     .card-container {
         margin-top: 20px;
+        margin-bottom: 300px;
         margin-left: 0;
         display: flex;
         justify-content: center;
@@ -31,12 +32,15 @@
     }
 
     .card{
-        width: 156px !important;
+        width: 300px!important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .card .coverImg{
-        width: 135px;
-        height: 130px;
+        width: 200px;
+        height: 200px;
     }
 
 
@@ -48,7 +52,7 @@
     .play-bar {
         display: flex;
         justify-content: space-between;
-        height: 250px;
+        height: 280px;
         width: 100vw;
         flex-direction: column;
         padding: 10px;
@@ -75,6 +79,7 @@
     .songCover{
         margin: 0;
         width: 70%;
+        height: 40px;
     }
 
     .song-info {
@@ -83,11 +88,17 @@
         justify-content: center;
         align-items: center;
         width: 70%;
+        font-size: 20px;
     }
 
     .song-controls {
-        flex-direction: column;
-        gap: 8px;
+        flex-direction: column-reverse;
+        gap: 15px;
+    }
+
+    .song-time{
+        margin-top: 10px;
+        font-size: 15px;
     }
 
     .seek-bar {
