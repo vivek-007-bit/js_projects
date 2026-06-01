@@ -11,9 +11,7 @@
         left: 0;
         transform: translate(-0, -0);
         margin: auto;
-        position: absolute;
-        top: 10%;
-        margin-bottom: 10%;
+        position: absolute;
     }
 
     .header #search-bar {
