@@ -10,23 +10,22 @@ body {
     background-position: center center;
     background-size: cover;
     backdrop-filter: blur(10px);
-    min-height: 100dvh;
+    min-height: 100vh;
+    height: auto;
     width: 100vw;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 10px;
     border: solid black 2px;
     border-radius: 10px;
-    background-color: aquamarine;
+    background-color: #7fffd4;
     width: 550px;
     height: auto;
     margin: auto;
+    margin-top: 2%;
 }
 
 
