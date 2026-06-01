@@ -2,7 +2,7 @@
 
     body{
         overflow-x: hidden;
-        background: rgb(0, 0, 0);
+        overflow-y: scroll;
     }
 
     .container {
@@ -10,6 +10,10 @@
         top: 0;
         left: 0;
         transform: translate(-0, -0);
+        margin: auto;
+        position: absolute;
+        top: 10%;
+        margin-bottom: 10%;
     }
 
     .header #search-bar {
