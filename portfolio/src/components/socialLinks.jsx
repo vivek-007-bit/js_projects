@@ -6,8 +6,7 @@ function socialLinks() {
             <Nav className="justify-content-center">
                 <Nav.Item>
                     <Nav.Link
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=viveksharma40649@gmail.com" 
-                        target='_blank'
+                        href="mailto:viveksharma40649@gmail.com" 
                         aria-label="Email"
                         className="text-body-secondary"
                     >
