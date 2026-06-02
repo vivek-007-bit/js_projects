@@ -119,7 +119,7 @@ function HeroSection() {
             <Button
               variant="light"
               size="lg"
-              className="px-4 me-sm-3 mb-2 mb-sm-0"
+              className="px-4 me-sm-3 mb-2 mb-sm-0 explore-btn"
             >
               Explore Portfolio
             </Button>
