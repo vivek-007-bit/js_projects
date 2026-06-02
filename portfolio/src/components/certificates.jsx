@@ -23,11 +23,11 @@ function certificates() {
     <>
       <div className="album py-5 bg-light" id='certificates'>
         <Container>
-          <h2 className='mb-4 mt-5 border-bottom'>Certificates</h2>
+          <h1 className='mb-4 mt-5 border-bottom'>Certificates</h1>
           <Row xs={1} sm={2} md={3} className="g-3 justify-content-center">
             {certificates.map(certificates => (
               <Col key={certificates.id}>
-                <Card className="shadow-sm card-hover">
+                <Card className="shadow-sm card-hover" style={{border: "solid black 2px"}}>
                   <Card.Img
                     variant="top"
                     src={certificates.img}
