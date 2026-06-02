@@ -1,4 +1,5 @@
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import SocialLinks from '../components/socialLinks';
 
 function about() {
 
@@ -31,8 +32,8 @@ function about() {
 
   return (
     <>
-      <Container className="py-5" id='about'>
-        <h2 className="pb-2 mt-4 border-bottom"></h2>
+      <Container className="py-1" id='about'>
+        <h2 className="pb-1 mt-4 border-bottom"></h2>
         <Row className="flex-lg-row-reverse align-items-center g-5 py-5">
           <Col xs={10} sm={8} lg={6}>
             <img
@@ -42,6 +43,7 @@ function about() {
               width="500"
               height="500"
               loading="lazy"
+              style={{ border: "Solid black 1px", borderRadius: "5px" }}
             />
           </Col>
           <Col lg={6}>
@@ -55,18 +57,22 @@ function about() {
               to individual user needs. I like combining technology and
               creativity to build digital experiences that are both practical and engaging.
             </p>
+
+
             <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+              <SocialLinks />
               <Button variant="outline-warning" size="lg" className="px-4 me-md-2">
-                <a href="/cv.pdf" className='text-decoration-none text-dark fw-bold' target="_blank" rel="noopener noreferrer"> Download CV</a>
+                <a href="/Vivek_Sharma_resume_final.pdf" className='text-decoration-none text-dark fw-bold' target="_blank" rel="noopener noreferrer"> Download CV</a>
               </Button>
             </div>
+
           </Col>
         </Row>
-      </Container>
+      </Container >
 
       <div className="bg-light">
-        <Container className="px-4 py-5" id="education">
-          <h2 className="pb-2 border-bottom">Education</h2>
+        <Container className="px-4 py-1" id="education">
+          <h1 className="pb-2 border-bottom">Education</h1>
           <Row className="g-4 py-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
             {educationData.map((edu) => (
               <Col key={edu.id}>
