@@ -111,18 +111,19 @@ function HeroSection() {
         </h3>
 
         <div className="d-grid gap-2 d-sm-flex justify-content-sm-center herobtn">
-          <Button
-            variant="light"
-            size="lg"
-            className="px-4 me-sm-3 mb-2 mb-sm-0"
-          >
-            <a href="#about" style={{
-              textDecoration: "none",
-              color: "black",
-            }}>
+
+          <a href="#about" style={{
+            textDecoration: "none",
+            color: "black",
+          }}>
+            <Button
+              variant="light"
+              size="lg"
+              className="px-4 me-sm-3 mb-2 mb-sm-0"
+            >
               Explore Portfolio
-            </a>
-          </Button>
+            </Button>
+          </a>
 
           <Button
             variant="outline-light"
