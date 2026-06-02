@@ -50,4 +50,8 @@
   .herobtn{
     margin-top: 40px !important;
   }
+
+  .explore-btn{
+    width: 336px;
+  }
 }
