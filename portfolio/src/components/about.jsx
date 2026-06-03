@@ -62,7 +62,7 @@ function about() {
             <div className="d-grid gap-2 d-md-flex justify-content-md-start">
               <SocialLinks />
 
-              <a href="/Vivek Sharma_resume.pdf" className='text-decoration-none text-dark fw-bold' target="_blank" rel="noopener noreferrer">
+              <a href="/Vivek Sharma_resume.pdf" className='text-decoration-none text-dark fw-bold resume-btn' target="_blank" rel="noopener noreferrer">
                 <Button variant="outline-warning" size="lg" className="px-4 me-md-2"  style={{color: "black",}}>
                   Download CV
                 </Button>
