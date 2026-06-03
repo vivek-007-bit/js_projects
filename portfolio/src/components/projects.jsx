@@ -8,7 +8,7 @@ function Projects() {
       img: '/project2.png',
       text: `<h4>SocialSphere</h4>A full-stack Facebook-inspired social media application with secure authentication, interactive user features for improved user engagement.`,
       techStack: ['PHP', 'MySQL', 'JavaScript', 'Cloudinary API'],
-      link: '',
+      link: 'https://facebook-316k.onrender.com',
       github: 'https://github.com/vivek-007-bit/php_projects/tree/main/facebook',
     },
     {
