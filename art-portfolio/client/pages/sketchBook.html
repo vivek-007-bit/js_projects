@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sketchbook | Artfolio</title>
+
+    <link rel="shortcut icon" href="../assets/favicon2.svg" type="image/x-icon">
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- GLIGHTBOX CSS -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    >
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#f5f0e6;
+
+            font-family:'Poppins', sans-serif;
+
+            overflow-x:hidden;
+
+            color:#3e2f24;
+
+            -webkit-font-smoothing:antialiased;
+        }
+
+        img{
+
+            width:100%;
+
+            display:block;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .container-custom{
+
+            width:min(92%,1400px);
+
+            margin:auto;
+        }
+
+        /* HERO */
+
+        .sketch-hero{
+
+            padding:90px 0 70px;
+
+            text-align:center;
+        }
+
+        .sketch-hero small{
+
+            letter-spacing:4px;
+
+            text-transform:uppercase;
+
+            color:#8a6a50;
+        }
+
+        .sketch-hero h1{
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(3rem,8vw,5rem);
+
+            margin:18px 0;
+        }
+
+        .sketch-hero p{
+
+            max-width:720px;
+
+            margin:auto;
+
+            line-height:1.9;
+
+            color:#5b4636;
+        }
+
+        /* GALLERY */
+
+        .sketch-gallery{
+            padding-bottom:100px;
+        }
+
+        .sketch-grid{
+
+            display:flex;
+
+            flex-wrap:wrap;
+
+            gap:22px;
+        }
+
+        .sketch-card{
+
+            flex:1 1 320px;
+
+            background:#fff;
+
+            border-radius:22px;
+
+            overflow:hidden;
+
+            cursor:pointer;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,.06);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+            will-change:transform;
+        }
+
+        .sketch-card:hover{
+
+            transform:translateY(-6px);
+
+            box-shadow:
+                0 14px 30px rgba(0,0,0,.10);
+        }
+
+        .sketch-card img{
+
+            height:320px;
+
+            object-fit:cover;
+
+            transition:transform .35s ease;
+        }
+
+        .sketch-card:hover img{
+            transform:scale(1.03);
+        }
+
+        .card-content{
+            padding:20px;
+        }
+
+        .card-content h3{
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:2rem;
+
+            margin-bottom:8px;
+        }
+
+        .card-content p{
+
+            color:#6b5647;
+
+            line-height:1.7;
+
+            font-size:.95rem;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px){
+
+            .sketch-card img{
+                height:250px;
+            }
+
+            .card-content h3{
+                font-size:1.6rem;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="sketch-hero">
+
+        <div class="container-custom">
+
+            <small>Hand Drawn Collection</small>
+
+            <h1>Sketchbook Archive</h1>
+
+            <p>
+                Explorations of movement, anatomy,
+                emotion and abstraction captured
+                through graphite, ink and expressive lines.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    <section class="sketch-gallery">
+
+        <div class="container-custom">
+
+            <div
+                class="sketch-grid"
+                id="sketchGallery"
+            ></div>
+
+        </div>
+
+    </section>
+
+    <!-- GLIGHTBOX JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- GALLERY SCRIPT -->
+
+    <script>
+
+        async function loadSketchGallery() {
+
+            const gallery =
+                document.getElementById(
+                    "sketchGallery"
+                );
+
+            try {
+
+                /* FETCH JSON */
+
+                const request =
+                    await fetch(
+                        "data/sketchGallery.json"
+                    );
+
+                if(!request.ok){
+
+                    throw new Error(
+                        "Failed to load gallery"
+                    );
+                }
+
+                const response =
+                    await request.json();
+
+                /* GENERATE CARDS */
+
+                const cards =
+                    response.map(item => `
+
+                        <a
+                            href="${item.img}"
+                            class="sketch-card glightbox"
+                            data-gallery="sketch-gallery"
+                            data-title="${item.heading}"
+                            data-description="${item.subheading}"
+                        >
+
+                            <img
+                                src="${item.img}"
+                                alt="${item.heading}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                            <div class="card-content">
+
+                                <h3>${item.heading}</h3>
+
+                                <p>${item.subheading}</p>
+
+                            </div>
+
+                        </a>
+
+                    `).join("");
+
+                /* INSERT INTO DOM */
+
+                gallery.innerHTML = cards;
+
+                /* INITIALIZE GLIGHTBOX */
+
+                const lightbox = GLightbox({
+
+                    selector: ".glightbox",
+
+                    touchNavigation: true,
+
+                    loop: true,
+
+                    zoomable: true,
+
+                    draggable: true,
+
+                    openEffect: "zoom",
+
+                    closeEffect: "fade"
+
+                });
+
+            }
+
+            catch(error){
+
+                console.error(error);
+
+                gallery.innerHTML = `
+
+                    <p>
+                        Failed to load sketch gallery.
+                    </p>
+
+                `;
+            }
+        }
+
+        /* LOAD AFTER DOM READY */
+
+        document.addEventListener(
+
+            "DOMContentLoaded",
+
+            loadSketchGallery
+
+        );
+
+    </script>
+
+</body>
+
+</html>

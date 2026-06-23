@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Motion Art | Artfolio</title>
+
+    <link rel="shortcut icon" href="../assets/favicon2.svg" type="image/x-icon">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f5f0e6;
+            --text: #3e2f24;
+            --accent: #8a6a50;
+        }
+
+        body {
+
+            background: var(--bg);
+
+            font-family: 'Poppins', sans-serif;
+
+            overflow-x: hidden;
+
+            color: var(--text);
+        }
+
+        .container-custom {
+
+            width: min(92%, 1450px);
+
+            margin: auto;
+        }
+
+
+        .motion-hero {
+
+            padding: 100px 0 80px;
+
+            text-align: center;
+        }
+
+        .motion-hero small {
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color: var(--accent);
+
+            font-size: .8rem;
+        }
+
+        .motion-hero h1 {
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(3rem, 7vw, 5rem);
+
+            margin: 20px 0;
+
+            line-height: 1;
+        }
+
+        .motion-hero p {
+
+            max-width: 760px;
+
+            margin: auto;
+
+            line-height: 1.9;
+
+            color: #5b4636;
+        }
+
+
+        .motion-gallery {
+
+            padding-bottom: 120px;
+        }
+
+        .motion-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 28px;
+        }
+
+
+        .motion-card {
+
+            background: #ffffff;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            transition:
+                transform .35s ease,
+                box-shadow .35s ease;
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .motion-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .motion-video {
+
+            width: 100%;
+
+            aspect-ratio: 16/9;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .motion-video iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            display: block;
+
+            transition:
+                transform .5s ease;
+        }
+
+        .motion-card:hover iframe {
+
+            transform: scale(1.03);
+        }
+
+
+        .motion-content {
+
+            padding: 22px;
+        }
+
+        .motion-content h3 {
+
+            font-size: 2rem;
+
+            margin-bottom: 8px;
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+        }
+
+        .motion-content span {
+
+            color: #7a614d;
+
+            font-size: .95rem;
+        }
+
+
+        @media(max-width:992px) {
+
+            .motion-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:768px) {
+
+            .motion-hero {
+
+                padding: 80px 0 60px;
+            }
+
+            .motion-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .motion-content h3 {
+
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="motion-hero">
+
+        <div class="container-custom">
+
+            <small>Cinematic Visual Collection</small>
+
+            <h1>
+                Motion Art Archive
+            </h1>
+
+            <p>
+                A curated exploration of moving visuals,
+                atmosphere and experimental storytelling
+                through cinematic compositions and animated forms.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    <section class="motion-gallery">
+
+        <div class="container-custom">
+
+            <div class="motion-grid" id="motionGallery">
+
+            </div>
+
+        </div>
+
+    </section>
+    <script>
+
+        async function loadMotionGallery() {
+
+            const gallery =
+                document.getElementById(
+                    "motionGallery"
+                );
+
+            try {
+
+                const request =
+                    await fetch(
+                        "data/motionGallery.json"
+                    );
+
+                if (!request.ok) {
+                    throw new Error(
+                        "Failed to fetch gallery"
+                    );
+                }
+
+                const response =
+                    await request.json();
+
+                let cards = "";
+
+                response.forEach(item => {
+
+                    cards += `
+    
+                        <article class="motion-card">
+    
+                            <div class="motion-video">
+    
+                                <iframe
+                                    src="${item.video}"
+                                    title="${item.heading}"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen
+                                    loading="lazy">
+                                </iframe>
+    
+                            </div>
+    
+                            <div class="motion-content">
+    
+                                <h3>${item.heading}</h3>
+    
+                                <span>${item.subheading}</span>
+    
+                            </div>
+    
+                        </article>
+    
+                    `;
+                });
+
+                gallery.innerHTML = cards;
+
+            }
+
+            catch (error) {
+
+                console.error(error);
+
+                gallery.innerHTML = `
+                    <p>Failed to load motion gallery.</p>
+                `;
+            }
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadMotionGallery
+        );
+
+    </script>
+</body>
+
+</html>

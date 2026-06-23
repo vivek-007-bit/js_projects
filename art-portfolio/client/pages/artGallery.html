@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Smooth Art Gallery</title>
+
+    <link rel="shortcut icon" href="../assets/favicon2.svg" type="image/x-icon">
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- GLIGHTBOX CSS -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    >
+
+    <style>
+
+        :root{
+
+            --bg:#f5f0e6;
+
+            --text:#3e2f24;
+
+            --card:#ffffff;
+
+            --shadow:
+                0 4px 14px rgba(0,0,0,.06);
+        }
+
+        *{
+
+            margin:0;
+
+            padding:0;
+
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+
+            background:var(--bg);
+
+            font-family:'Poppins',sans-serif;
+
+            color:var(--text);
+
+            overflow-x:hidden;
+
+            -webkit-font-smoothing:antialiased;
+
+            text-rendering:optimizeLegibility;
+        }
+
+        img{
+
+            width:100%;
+
+            display:block;
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+        .container-custom{
+
+            width:min(92%,1400px);
+
+            margin:auto;
+        }
+
+        /* HERO */
+
+        .gallery-hero{
+
+            padding:70px 0;
+
+            text-align:center;
+        }
+
+        .gallery-hero h1{
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:
+                clamp(3rem,8vw,5rem);
+
+            line-height:1;
+
+            margin-bottom:16px;
+        }
+
+        .gallery-hero p{
+
+            max-width:680px;
+
+            margin:auto;
+
+            line-height:1.8;
+
+            color:#5d4a3d;
+        }
+
+        /* GALLERY */
+
+        .art-gallery{
+            padding-bottom:80px;
+        }
+
+        .gallery-grid{
+
+            display:flex;
+
+            flex-wrap:wrap;
+
+            gap:20px;
+        }
+
+        .gallery-card{
+
+            flex:1 1 320px;
+
+            background:var(--card);
+
+            border-radius:18px;
+
+            overflow:hidden;
+
+            cursor:pointer;
+
+            box-shadow:var(--shadow);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+            transform:translateZ(0);
+
+            will-change:transform;
+        }
+
+        .gallery-card:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:
+                0 10px 24px rgba(0,0,0,.10);
+        }
+
+        .gallery-card img{
+
+            height:300px;
+
+            object-fit:cover;
+
+            transition:
+                transform .35s ease;
+
+            will-change:transform;
+        }
+
+        .gallery-card:hover img{
+            transform:scale(1.03);
+        }
+
+        .card-content{
+            padding:18px;
+        }
+
+        .card-content h3{
+
+            font-family:
+                'Cormorant Garamond',
+                serif;
+
+            font-size:1.9rem;
+
+            line-height:1.1;
+
+            margin-bottom:8px;
+        }
+
+        .card-content p{
+
+            font-size:.95rem;
+
+            line-height:1.7;
+
+            color:#6a5647;
+        }
+
+        /* PERFORMANCE */
+
+        .gallery-card,
+        .gallery-card img{
+            backface-visibility:hidden;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:768px){
+
+            .gallery-grid{
+                gap:16px;
+            }
+
+            .gallery-card img{
+                height:240px;
+            }
+
+            .card-content h3{
+                font-size:1.6rem;
+            }
+
+            .gallery-hero{
+                padding:55px 0;
+            }
+        }
+
+        /* REDUCED MOTION */
+
+        @media(prefers-reduced-motion:reduce){
+
+            *{
+
+                animation:none !important;
+
+                transition:none !important;
+
+                scroll-behavior:auto !important;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="gallery-hero">
+
+        <div class="container-custom">
+
+            <h1>Art Gallery</h1>
+
+            <p>
+                A curated collection of artistic moments,
+                textures and visual storytelling.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- GALLERY -->
+
+    <section class="art-gallery">
+
+        <div class="container-custom">
+
+            <div
+                class="gallery-grid"
+                id="gallery"
+            ></div>
+
+        </div>
+
+    </section>
+
+    <!-- GLIGHTBOX JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- GALLERY SCRIPT -->
+
+    <script>
+
+        async function loadGallery() {
+
+            const gallery =
+                document.getElementById(
+                    "gallery"
+                );
+
+            try {
+
+                /* FETCH JSON */
+
+                const request =
+                    await fetch(
+                        "data/artGallery.json"
+                    );
+
+                if(!request.ok){
+
+                    throw new Error(
+                        "Failed to fetch gallery data"
+                    );
+                }
+
+                const response =
+                    await request.json();
+
+                /* GENERATE CARDS */
+
+                const cards =
+                    response.map(item => `
+
+                        <a
+                            href="${item.img}"
+                            class="gallery-card glightbox"
+                            data-gallery="art-gallery"
+                            data-title="${item.heading}"
+                            data-description="${item.subheading}"
+                        >
+
+                            <img
+                                src="${item.img}"
+                                alt="${item.heading}"
+                                loading="lazy"
+                                decoding="async"
+                            >
+
+                            <div class="card-content">
+
+                                <h3>${item.heading}</h3>
+
+                                <p>${item.subheading}</p>
+
+                            </div>
+
+                        </a>
+
+                    `).join("");
+
+                /* INSERT INTO DOM */
+
+                gallery.innerHTML = cards;
+
+                /* INITIALIZE GLIGHTBOX */
+
+                const lightbox = GLightbox({
+
+                    selector: ".glightbox",
+
+                    touchNavigation: true,
+
+                    loop: true,
+
+                    zoomable: true,
+
+                    draggable: true,
+
+                    openEffect: "zoom",
+
+                    closeEffect: "fade"
+
+                });
+
+            }
+
+            catch(error){
+
+                console.error(error);
+
+                gallery.innerHTML = `
+
+                    <p>
+                        Failed to load gallery.
+                    </p>
+
+                `;
+            }
+        }
+
+        /* LOAD AFTER DOM READY */
+
+        document.addEventListener(
+
+            "DOMContentLoaded",
+
+            loadGallery
+
+        );
+
+    </script>
+
+</body>
+
+</html>
