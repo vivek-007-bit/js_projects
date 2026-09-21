@@ -73,7 +73,7 @@ function HeroSection() {
         <Image
           src="/profile-pic.jpg"
           alt="profile picture"
-          loading="lazy"
+          loading="eager"
           width={200}
           height={200}
           roundedCircle
